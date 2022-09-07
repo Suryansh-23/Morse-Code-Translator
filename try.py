@@ -1,11 +1,10 @@
-import string
 from typing import List, Tuple
 
 import matplotlib.pyplot as plt
 import numpy as np
 from scipy import interpolate, io, signal
 from scipy.cluster.vq import kmeans, whiten
-from scipy.fft import fft, fftfreq, ifft, irfft, rfft, rfftfreq
+from scipy.fft import fft, fftfreq, irfft, rfft, rfftfreq
 from scipy.interpolate import interp1d
 from scipy.signal import blackman, spectrogram
 
@@ -314,7 +313,7 @@ def process(data: np.ndarray, bars: List) -> List[Tuple[int, int]]:
     return beeps
 
 
-def translate(samp: int, beeps: List[Tuple[int, int]], speed: int) -> string:
+def translate(samp: int, beeps: List[Tuple[int, int]], speed: int) -> str:
     threshold = 75
 
     divider0 = div0(samp, beeps, speed, threshold)
@@ -483,7 +482,7 @@ def decode(mstr: str):
     return msg
 
 
-fname = ".\\tests\\test.wav"
+fname = ".\\tests\\test sentence.wav"
 test = io.wavfile.read(fname)
 
 # print(test[1].shape,test[0])
@@ -492,7 +491,7 @@ test = io.wavfile.read(fname)
 # Tryouts for Various Funcs
 # fit_beizer(*test)
 # kms(*test)
-# plot(*test)
+plot(*test)
 # print(extract_peak_frequency(*test))
 # denoise(*test)
 # data = dofft0(*test)
@@ -505,11 +504,11 @@ test = io.wavfile.read(fname)
 # peaks(d)
 
 # Working Setup for De-Noised Audios
-d, bars = corr(*test)
-print("Got 'd'")
-beeps = process(d, bars)
-print("Got 'beeps'")
-mstr = translate(test[0], beeps, 20)
-print("Got 'mstr'")
-msg = decode(mstr)
-print('Message Decoded:', msg)
+# d, bars = corr(*test)
+# print("Got 'd'")
+# beeps = process(d, bars)
+# print("Got 'beeps'")
+# mstr = translate(test[0], beeps, 20)
+# print("Got 'mstr'")
+# msg = decode(mstr)
+# print('Message Decoded:', msg)
