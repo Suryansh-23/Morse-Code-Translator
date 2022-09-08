@@ -1,6 +1,6 @@
 import os
-from smtplib import SMTPServerDisconnected
-from typing import List, Tuple, Any
+from typing import Any, List, Tuple
+
 import matplotlib.pyplot as plt
 import numpy as np
 from scipy import io
